@@ -1,4 +1,4 @@
-schema: veilcheck/v1
+schema: evm-privacy-ci/v1
 assets:
   - id: payroll.amount
     class: confidential

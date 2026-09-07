@@ -1,11 +1,11 @@
-# VeilCheck policy specification
+# EVM Privacy CI policy specification
 
-**Schema:** `veilcheck/v1`
+**Schema:** `evm-privacy-ci/v1`
 **Status:** Designed. The repository scaffold validates the required JSON subset; YAML parsing, JSON Schema enforcement, source-map selectors, exceptions, and adapters are not implemented yet.
 
 ## 1. Purpose
 
-A policy tells VeilCheck which application assets need protection, where those assets occur in the code, and which public disclosures are either prohibited or deliberately allowed.
+A policy tells EVM Privacy CI which application assets need protection, where those assets occur in the code, and which public disclosures are either prohibited or deliberately allowed.
 
 The policy is not a privacy policy for end users and is not a legal compliance document. It is an engineering control checked against a limited analysis scope.
 
@@ -14,17 +14,17 @@ The policy is not a privacy policy for end users and is not a legal compliance d
 The canonical path is:
 
 ```text
-veilcheck.yaml
+evm-privacy-ci.yaml
 ```
 
-The preferred authoring format is YAML. The canonical generated form is JSON. The proposal-stage CLI currently accepts `.json` only so that the scaffold has no undeclared parser dependency; use [examples/basic/veilcheck.json](../examples/basic/veilcheck.json) to exercise it.
+The preferred authoring format is YAML. The canonical generated form is JSON. The proposal-stage CLI currently accepts `.json` only so that the scaffold has no undeclared parser dependency; use [examples/basic/evm-privacy-ci.json](../examples/basic/evm-privacy-ci.json) to exercise it.
 
-Before the first release, YAML support must use a pinned, reviewed parser and validate against [`schemas/veilcheck-v1.schema.json`](../schemas/veilcheck-v1.schema.json).
+Before the first release, YAML support must use a pinned, reviewed parser and validate against [`schemas/evm-privacy-ci-v1.schema.json`](../schemas/evm-privacy-ci-v1.schema.json).
 
 ## 3. Minimal document
 
 ```yaml
-schema: veilcheck/v1
+schema: evm-privacy-ci/v1
 assets:
   - id: payroll.amount
     class: confidential
@@ -41,7 +41,7 @@ assets:
 
 | Field | Required | Meaning |
 | --- | --- | --- |
-| `schema` | yes | Must be `veilcheck/v1` |
+| `schema` | yes | Must be `evm-privacy-ci/v1` |
 | `assets` | yes | Non-empty list of classified assets |
 | `proofs` | no | Proof-system/public-input policy maps |
 | `vela` | no | Vela deployment and boundary assertions |
@@ -241,7 +241,7 @@ defaults:
   fail_on:
     - error
   require_clean_coverage: true
-  baseline: .veilcheck/baseline.json
+  baseline: .evm-privacy-ci/baseline.json
 ```
 
 `require_clean_coverage: true` means an unsupported code path cannot produce a passing privacy gate. Teams may set it to false only with an explicit, reviewed exception in v1.
@@ -249,7 +249,7 @@ defaults:
 ## 13. Complete example
 
 ```yaml
-schema: veilcheck/v1
+schema: evm-privacy-ci/v1
 metadata:
   owner: protocol-security
   review_date: 2026-09-07

@@ -5,7 +5,7 @@
 ## Repository evolution
 
 ```text
-src/veilcheck/
+src/evm_privacy_ci/
   cli.py                 command parsing and exit behavior
   policy.py              parser, normalizer, schema migration
   rules.py               rule metadata only
@@ -34,7 +34,7 @@ schemas/
 - Add pinned YAML parsing and JSON Schema validation.
 - Implement canonical normalized model and source-located diagnostic errors.
 - Support documented classes, surfaces, disclosures, proof maps, defaults, and exceptions.
-- Define migration behavior from `veilcheck/v1` to later schema versions.
+- Define migration behavior from `evm-privacy-ci/v1` to later schema versions.
 - Add policy linter rules: duplicate IDs, missing selectors, unsafe raw-hash assumption, expired exception, unknown surface.
 
 ### Done when

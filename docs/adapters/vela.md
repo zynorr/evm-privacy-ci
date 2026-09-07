@@ -17,7 +17,7 @@ Those properties do not remove all public application surfaces. The documented l
 - encrypted events returned to the registered user; and
 - a `deanonymize` operation for authorized auditors.
 
-See [Vela's private-app walkthrough](https://docs.horizen.io/vela/getting-started/hello-world/). VeilCheck must make those surfaces explicit in policy rather than implying that every part of an app is private.
+See [Vela's private-app walkthrough](https://docs.horizen.io/vela/getting-started/hello-world/). EVM Privacy CI must make those surfaces explicit in policy rather than implying that every part of an app is private.
 
 ## Adapter objectives
 

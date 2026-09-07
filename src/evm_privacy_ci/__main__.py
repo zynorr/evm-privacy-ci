@@ -1,4 +1,4 @@
-from veilcheck.cli import main
+from evm_privacy_ci.cli import main
 
 
 if __name__ == "__main__":

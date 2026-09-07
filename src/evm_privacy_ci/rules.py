@@ -1,4 +1,4 @@
-"""Stable metadata for the first VeilCheck rule catalogue.
+"""Stable metadata for the first EVM Privacy CI rule catalogue.
 
 These entries describe the intended rules. They are not evidence that a
 corresponding analyzer has shipped.

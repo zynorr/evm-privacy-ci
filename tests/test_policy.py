@@ -1,12 +1,12 @@
 import unittest
 
-from veilcheck.policy import validate_policy
+from evm_privacy_ci.policy import validate_policy
 
 
 class PolicyValidationTests(unittest.TestCase):
     def test_accepts_minimal_valid_policy(self) -> None:
         policy = {
-            "schema": "veilcheck/v1",
+            "schema": "evm-privacy-ci/v1",
             "assets": [
                 {
                     "id": "order.amount",
@@ -21,7 +21,7 @@ class PolicyValidationTests(unittest.TestCase):
 
     def test_rejects_duplicate_asset_ids(self) -> None:
         policy = {
-            "schema": "veilcheck/v1",
+            "schema": "evm-privacy-ci/v1",
             "assets": [
                 {"id": "amount", "class": "secret", "selectors": ["A::x"]},
                 {"id": "amount", "class": "public", "selectors": ["A::y"]},
@@ -32,7 +32,7 @@ class PolicyValidationTests(unittest.TestCase):
 
     def test_rejects_unknown_surface(self) -> None:
         policy = {
-            "schema": "veilcheck/v1",
+            "schema": "evm-privacy-ci/v1",
             "assets": [
                 {"id": "amount", "class": "secret", "selectors": ["A::x"], "forbidden_surfaces": ["magic"]}
             ],

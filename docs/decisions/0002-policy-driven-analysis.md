@@ -9,7 +9,7 @@ Solidity types and variable names do not establish business privacy semantics. A
 
 ## Decision
 
-VeilCheck requires a versioned policy document with:
+EVM Privacy CI requires a versioned policy document with:
 
 - classified assets;
 - selectors resolving to source entities;

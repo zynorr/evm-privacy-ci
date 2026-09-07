@@ -1,4 +1,4 @@
-"""Minimal, dependency-free validation for veilcheck/v1 policy documents.
+"""Minimal, dependency-free validation for evm-privacy-ci/v1 policy documents.
 
 The parser deliberately accepts JSON only in the scaffold. YAML support belongs
 behind a pinned dependency and a full schema test suite; docs use YAML because
@@ -48,14 +48,14 @@ def load_policy(path: str | Path) -> dict[str, Any]:
     with source.open("r", encoding="utf-8") as handle:
         payload = json.load(handle)
     if not isinstance(payload, dict):
-        raise ValueError("A VeilCheck policy must be a JSON object.")
+        raise ValueError("An EVM Privacy CI policy must be a JSON object.")
     return payload
 
 
 def validate_policy(policy: dict[str, Any]) -> ValidationResult:
     errors: list[str] = []
-    if policy.get("schema") != "veilcheck/v1":
-        errors.append("schema must equal 'veilcheck/v1'.")
+    if policy.get("schema") != "evm-privacy-ci/v1":
+        errors.append("schema must equal 'evm-privacy-ci/v1'.")
 
     assets = policy.get("assets")
     if not isinstance(assets, list) or not assets:

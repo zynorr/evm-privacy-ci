@@ -5,19 +5,19 @@
 ## Command design
 
 ```text
-veilcheck validate-policy <policy.json>
-veilcheck explain <RULE_ID>
-veilcheck scan <target> --policy veilcheck.yaml --format terminal|json|sarif
-veilcheck baseline create --policy veilcheck.yaml --output .veilcheck/baseline.json
-veilcheck adapter vela run --policy veilcheck.yaml
-veilcheck adapter zkverify validate --policy veilcheck.yaml --proof <proof-id>
+evm-privacy-ci validate-policy <policy.json>
+evm-privacy-ci explain <RULE_ID>
+evm-privacy-ci scan <target> --policy evm-privacy-ci.yaml --format terminal|json|sarif
+evm-privacy-ci baseline create --policy evm-privacy-ci.yaml --output .evm-privacy-ci/baseline.json
+evm-privacy-ci adapter vela run --policy evm-privacy-ci.yaml
+evm-privacy-ci adapter zkverify validate --policy evm-privacy-ci.yaml --proof <proof-id>
 ```
 
 ## Current behavior
 
 | Command | Behavior |
 | --- | --- |
-| `validate-policy <json>` | Validates the dependency-free JSON subset of `veilcheck/v1` |
+| `validate-policy <json>` | Validates the dependency-free JSON subset of `evm-privacy-ci/v1` |
 | `explain <rule>` | Prints stable rule metadata |
 | `scan` | Exits with status `3` and says that analysis is not implemented |
 
@@ -27,7 +27,7 @@ The current CLI should never be used as evidence of a Solidity scan.
 
 | Option | Meaning |
 | --- | --- |
-| `--policy <path>` | Policy document; default `veilcheck.yaml` |
+| `--policy <path>` | Policy document; default `evm-privacy-ci.yaml` |
 | `--format terminal,json,sarif,markdown` | One or more output serializers |
 | `--output <path>` | Report path for non-terminal formats |
 | `--fail-on error,warning` | Finding severities that produce a non-zero result |
@@ -54,7 +54,7 @@ The current CLI should never be used as evidence of a Solidity scan.
 ```text
 ERROR VC003 event-disclosure [high]
 Asset: payroll.amount (confidential)
-Policy: veilcheck.yaml:12
+Policy: evm-privacy-ci.yaml:12
 Source: contracts/Payroll.sol:42 `pay(amount)`
 Sink: contracts/Payroll.sol:47 `emit SalaryPaid(employee, amount)`
 Path: pay.amount -> SalaryPaid.amount
@@ -73,8 +73,8 @@ Requirements:
 
 ```json
 {
-  "tool": {"name": "veilcheck", "version": "0.1.0"},
-  "policy": {"schema": "veilcheck/v1", "path": "veilcheck.yaml", "digest": "sha256:..."},
+  "tool": {"name": "evm-privacy-ci", "version": "0.1.0"},
+  "policy": {"schema": "evm-privacy-ci/v1", "path": "evm-privacy-ci.yaml", "digest": "sha256:..."},
   "summary": {"errors": 1, "warnings": 0, "coverage_gaps": 0},
   "findings": [
     {
@@ -85,7 +85,7 @@ Requirements:
       "source": {"uri": "contracts/Payroll.sol", "line": 42, "symbol": "Payroll.pay.amount"},
       "sink": {"uri": "contracts/Payroll.sol", "line": 47, "symbol": "SalaryPaid.amount", "surface": "event"},
       "path": ["Payroll.pay.amount", "SalaryPaid.amount"],
-      "policy_location": {"uri": "veilcheck.yaml", "line": 12},
+      "policy_location": {"uri": "evm-privacy-ci.yaml", "line": 12},
       "status": "new",
       "remediation": "Emit an approved commitment rather than raw amount."
     }
@@ -97,16 +97,16 @@ The exact JSON schema must be versioned before the first non-preview release. Cl
 
 ## SARIF mapping
 
-| VeilCheck field | SARIF field |
+| EVM Privacy CI field | SARIF field |
 | --- | --- |
 | Rule ID | `ruleId` |
 | Rule documentation | `tool.driver.rules[].helpUri` |
 | Severity | `level` |
 | Source location | `locations[0].physicalLocation` |
 | Taint path | `codeFlows` where supported |
-| Asset and classification | `properties.veilcheck.asset` |
+| Asset and classification | `properties.evmPrivacyCi.asset` |
 | Policy location | `relatedLocations` |
-| Coverage gap | `level: warning` plus `properties.veilcheck.coverageGap: true` |
+| Coverage gap | `level: warning` plus `properties.evmPrivacyCi.coverageGap: true` |
 
 SARIF output must follow GitHub limits and avoid over-large reports; the tool should summarize repetitive paths rather than emitting a finding per equivalent callsite.
 

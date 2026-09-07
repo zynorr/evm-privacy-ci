@@ -3,12 +3,12 @@ requires = ["setuptools>=68"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "veilcheck"
+name = "evm-privacy-ci"
 version = "0.0.0"
 description = "Proposal-stage privacy-boundary CI tooling for Vela, zkVerify, and Solidity applications."
 readme = "README.md"
 requires-python = ">=3.11"
-authors = [{name = "VeilCheck contributors"}]
+authors = [{name = "EVM Privacy CI contributors"}]
 classifiers = [
   "Development Status :: 2 - Pre-Alpha",
   "Intended Audience :: Developers",
@@ -17,7 +17,7 @@ classifiers = [
 ]
 
 [project.scripts]
-veilcheck = "veilcheck.cli:main"
+evm-privacy-ci = "evm_privacy_ci.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]

@@ -1,4 +1,4 @@
-# Contributing to VeilCheck
+# Contributing to EVM Privacy CI
 
 Thank you for helping build privacy-boundary tooling that is useful without overstating what automation can prove.
 
@@ -26,8 +26,9 @@ Every new rule needs:
 ## Local checks
 
 ```bash
+python -m pip install -e .
 python -m unittest discover -s tests -v
-python -m veilcheck validate-policy examples/basic/veilcheck.yaml
+python -m evm_privacy_ci validate-policy examples/basic/evm-privacy-ci.json
 ```
 
 ## Commit and pull-request guidance

@@ -1,12 +1,12 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://example.invalid/veilcheck/schemas/veilcheck-v1.schema.json",
-  "title": "VeilCheck v1 policy",
+  "$id": "https://example.invalid/evm-privacy-ci/schemas/evm-privacy-ci-v1.schema.json",
+  "title": "EVM Privacy CI v1 policy",
   "type": "object",
   "additionalProperties": false,
   "required": ["schema", "assets"],
   "properties": {
-    "schema": {"const": "veilcheck/v1"},
+    "schema": {"const": "evm-privacy-ci/v1"},
     "metadata": {"type": "object"},
     "defaults": {"type": "object"},
     "vela": {"type": "object"},

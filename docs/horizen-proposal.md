@@ -1,12 +1,12 @@
 # Horizen Builder Fund — Category 3 project brief
 
-**Working project name:** VeilCheck
+**Project name:** EVM Privacy CI
 **Category:** New Projects / public good
 **Status:** Proposal-stage; validate pilots before representing demand as proven.
 
 ## One sentence
 
-VeilCheck is an open-source CI gate that checks whether Vela, zkVerify, and Solidity applications leak policy-protected data through public EVM and proof-verification boundaries.
+EVM Privacy CI is an open-source CI gate that checks whether Vela, zkVerify, and Solidity applications leak policy-protected data through public EVM and proof-verification boundaries.
 
 ## Ecosystem need
 
@@ -14,7 +14,7 @@ Horizen supports privacy as an application-layer feature through Vela confidenti
 
 Vela’s local walkthrough illustrates this boundary: the private account ledger runs in the TEE, while an app upload/deployment request, public identifiers, user key registration, and onchain deposits exist around it. [Vela walkthrough](https://docs.horizen.io/vela/getting-started/hello-world/) zkVerify’s proof flow also binds public-input bytes into a public statement digest and lets applications verify public aggregation receipts on EVM chains. [zkVerify proof flow](https://docs.zkverify.io/architecture/proof-submission-interface)
 
-VeilCheck creates a reusable engineering control so each builder does not need to manually rediscover the same boundary mistakes.
+EVM Privacy CI creates a reusable engineering control so each builder does not need to manually rediscover the same boundary mistakes.
 
 ## Deliverable
 
@@ -31,7 +31,7 @@ It is not a smart-contract audit, privacy certification, compliance product, gen
 
 ## Why Category 3
 
-The Builder Fund names smaller public goods and focused security support as Category 3 candidates, while asking applicants to demonstrate genuine demand and early technical capability. VeilCheck is designed as a small shared security capability with measurable pilots—not a broad research agenda. [Horizen Builder Fund](https://horizen.io/builder-fund/)
+The Builder Fund names smaller public goods and focused security support as Category 3 candidates, while asking applicants to demonstrate genuine demand and early technical capability. EVM Privacy CI is designed as a small shared security capability with measurable pilots—not a broad research agenda. [Horizen Builder Fund](https://horizen.io/builder-fund/)
 
 ## Milestones
 

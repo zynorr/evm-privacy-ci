@@ -1,11 +1,11 @@
 # Threat model
 
 **Status:** Designed
-**Applies to:** `veilcheck/v1`, v1 rule pack, Vela and zkVerify adapters
+**Applies to:** `evm-privacy-ci/v1`, v1 rule pack, Vela and zkVerify adapters
 
 ## Security statement
 
-VeilCheck detects specified, supported paths from a **policy-labelled asset** to a **policy-forbidden observable surface**. It does not establish a global confidentiality proof.
+EVM Privacy CI detects specified, supported paths from a **policy-labelled asset** to a **policy-forbidden observable surface**. It does not establish a global confidentiality proof.
 
 A passing result means only:
 
@@ -78,11 +78,11 @@ Adds a seemingly harmless event, public getter, debug return, circuit signal, or
 - TEE implementation, hardware root of trust, remote-attestation validation, or side channels.
 - Unverified bytecode, arbitrary inline assembly, dynamic delegatecall, and code generated after the supported build unless explicitly covered by a later adapter.
 
-Ethereum’s privacy roadmap describes private reads, private writes, and private proving as distinct problem areas. VeilCheck covers only a bounded application-level subset of public execution and proof metadata; it does not claim to solve the full roadmap. [Ethereum privacy roadmap](https://ethereum.org/roadmap/privacy/)
+Ethereum’s privacy roadmap describes private reads, private writes, and private proving as distinct problem areas. EVM Privacy CI covers only a bounded application-level subset of public execution and proof metadata; it does not claim to solve the full roadmap. [Ethereum privacy roadmap](https://ethereum.org/roadmap/privacy/)
 
 ## Policy assumptions
 
-VeilCheck assumes that users:
+EVM Privacy CI assumes that users:
 
 1. classify assets honestly and completely;
 2. build their contracts successfully with the same configuration inspected in CI;

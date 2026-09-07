@@ -4,7 +4,7 @@
 
 ## Purpose
 
-The pilot determines whether VeilCheck solves a real engineering problem without requiring a team to expose production source, secrets, user data, or security-sensitive traces.
+The pilot determines whether EVM Privacy CI solves a real engineering problem without requiring a team to expose production source, secrets, user data, or security-sensitive traces.
 
 ## Who is a good pilot partner
 

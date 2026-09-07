@@ -4,7 +4,7 @@
 
 ## Principle
 
-VeilCheck processes source code, build artifacts, privacy policies, and potentially traces. Those inputs can reveal an application's attack surface or privacy design. The tool must never create a larger privacy exposure than the one it detects.
+EVM Privacy CI processes source code, build artifacts, privacy policies, and potentially traces. Those inputs can reveal an application's attack surface or privacy design. The tool must never create a larger privacy exposure than the one it detects.
 
 ## Data handling commitments for v1
 
@@ -51,7 +51,7 @@ Before public release:
 
 ## Secret handling
 
-VeilCheck must reject or warn about known secret-bearing input paths such as `wallet.conf`, `.env`, PEM/key files, and raw Vela wallet state when they are passed as analysis targets. It must not log their contents.
+EVM Privacy CI must reject or warn about known secret-bearing input paths such as `wallet.conf`, `.env`, PEM/key files, and raw Vela wallet state when they are passed as analysis targets. It must not log their contents.
 
 The Vela adapter must generate or use non-production test sentinels; it must not operate on real P-521 private keys, deployment keys, or user data.
 
@@ -59,7 +59,7 @@ The Vela adapter must generate or use non-production test sentinels; it must not
 
 Findings should include source/sink locations and policy asset IDs, but avoid copying full sensitive literal values. Dynamic probes may report a hashed/redacted sentinel correlation instead of emitting the raw sentinel.
 
-## Security boundaries VeilCheck cannot enforce
+## Security boundaries EVM Privacy CI cannot enforce
 
 - Developer workstation compromise.
 - Compromised compiler, dependency, or Docker daemon.

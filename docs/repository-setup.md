@@ -1,17 +1,16 @@
 # Repository setup and first push
 
-**Status:** Local Git repository initialized on `main`; no remote is configured and nothing has been published.
+**Status:** Public repository initialized on `main` at `zynorr/evm-privacy-ci`.
 
-## Before creating a public GitHub repository
+## Before a public release
 
 Complete these items first:
 
-1. Decide whether the working name **VeilCheck** has passed formal name/trademark review. Do not use it publicly until then.
-2. Identify real maintainers and replace pre-release placeholders in `SECURITY.md`, `GOVERNANCE.md`, and `CODE_OF_CONDUCT.md`.
-3. Select a final license after legal review; `LICENSE.md` is intentionally not a final license grant.
-4. Review every example and fixture for keys, real addresses, production source, user data, and sensitive traces.
-5. Run the local test suite using the commands in the README.
-6. Create the GitHub repository as private until the release checklist is complete.
+1. Identify real maintainers and replace pre-release placeholders in `SECURITY.md`, `GOVERNANCE.md`, and `CODE_OF_CONDUCT.md`.
+2. Select a final license after legal review; `LICENSE.md` is intentionally not a final license grant.
+3. Review every example and fixture for keys, real addresses, production source, user data, and sensitive traces.
+4. Run the local test suite using the commands in the README.
+5. Review repository visibility and issue intake against the release checklist.
 
 ## Suggested repository settings
 
@@ -23,14 +22,11 @@ Complete these items first:
 - Enable Dependabot version updates.
 - Do not enable public issue intake until `SECURITY.md` has a functioning private reporting route.
 
-## First push commands
+## Publishing a clean clone
 
-Replace placeholders only after the repository exists and naming/licensing decisions are complete:
+After cloning the repository and authenticating with GitHub:
 
 ```bash
-git add .
-git commit -m "chore: initialize privacy-boundary CI project scaffold"
-git remote add origin https://github.com/<organization>/<repository>.git
 git push -u origin main
 ```
 

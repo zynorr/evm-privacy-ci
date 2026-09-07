@@ -7,7 +7,7 @@
 
 zkVerify is a public decentralized blockchain focused on zero-knowledge proof verification. Proof submission binds verifier context, verification key, verifier version, and hashed public-input bytes into a statement digest. [zkVerify overview](https://docs.zkverify.io/) [Proof submission flow](https://docs.zkverify.io/architecture/proof-submission-interface)
 
-A proof can be valid while an application has disclosed more data than intended. VeilCheck therefore asks a separate question:
+A proof can be valid while an application has disclosed more data than intended. EVM Privacy CI therefore asks a separate question:
 
 > Is each public input, derived statement, and EVM receipt surface explicitly classified by the application's privacy policy?
 

@@ -1,18 +1,16 @@
-# VeilCheck
+# EVM Privacy CI
 
 > A local-first CI gate for privacy boundaries in Vela, zkVerify, and Solidity applications.
 
 **Project status:** proposal-stage scaffold. The policy validator and rule catalogue are usable; static Solidity analysis, Vela probing, and zkVerify adapters are deliberately not represented as shipped features.
 
-> **Naming note:** `VeilCheck` is a working name only. A privacy protocol already markets a product called "Veil Check+". Do not publish a production product, create an organization, buy domains, or file a trademark using this name before a formal clearance review. See [ADR-0001](docs/decisions/0001-name-and-product-scope.md).
-
-VeilCheck turns a privacy promise into a testable engineering policy. A builder labels an asset as `secret`, `confidential`, `linkable`, or `public`; VeilCheck then checks whether supported code paths expose that asset through observable EVM or proof-verification surfaces.
+EVM Privacy CI turns a privacy promise into a testable engineering policy. A builder labels an asset as `secret`, `confidential`, `linkable`, or `public`; EVM Privacy CI then checks whether supported code paths expose that asset through observable EVM or proof-verification surfaces.
 
 ## The problem
 
 Encryption, trusted execution, and zero-knowledge proofs do not automatically protect an application's public boundary. A supposedly private value can still escape in transaction calldata, events, raw on-chain storage, getters, return values, external calls, or ZK public inputs.
 
-VeilCheck does **not** certify privacy, replace a security audit, prove circuit soundness, or validate a TEE. It catches policy violations in a deliberately limited, explainable analysis scope. Read [the threat model](docs/threat-model.md) before relying on a finding or a pass.
+EVM Privacy CI does **not** certify privacy, replace a security audit, prove circuit soundness, or validate a TEE. It catches policy violations in a deliberately limited, explainable analysis scope. Read [the threat model](docs/threat-model.md) before relying on a finding or a pass.
 
 ## Scope
 
@@ -26,7 +24,7 @@ VeilCheck does **not** certify privacy, replace a security audit, prove circuit 
 
 ## Why Vela and zkVerify
 
-Vela provides confidential TEE execution, but deployment, key registration, transaction envelopes, public state roots, and authorized disclosure controls are privacy boundaries. zkVerify validates proofs, but a valid proof may still contain a policy-prohibited public input. VeilCheck is the engineering gate around those primitives, not a replacement for either one.
+Vela provides confidential TEE execution, but deployment, key registration, transaction envelopes, public state roots, and authorized disclosure controls are privacy boundaries. zkVerify validates proofs, but a valid proof may still contain a policy-prohibited public input. EVM Privacy CI is the engineering gate around those primitives, not a replacement for either one.
 
 See [Vela adapter design](docs/adapters/vela.md) and [zkVerify adapter design](docs/adapters/zkverify.md).
 
@@ -36,14 +34,14 @@ The current scaffold uses only the Python standard library.
 
 ```bash
 python -m pip install -e .
-veilcheck validate-policy examples/basic/veilcheck.yaml
-veilcheck explain VC003
+evm-privacy-ci validate-policy examples/basic/evm-privacy-ci.json
+evm-privacy-ci explain VC003
 ```
 
 Expected result:
 
 ```text
-Policy is valid: examples/basic/veilcheck.yaml
+Policy is valid: examples/basic/evm-privacy-ci.json
 ```
 
 The `scan` command intentionally exits with a clear not-yet-implemented message. This avoids a false impression that the repository already detects Solidity leaks.
@@ -51,7 +49,7 @@ The `scan` command intentionally exits with a clear not-yet-implemented message.
 ## Example policy
 
 ```yaml
-schema: veilcheck/v1
+schema: evm-privacy-ci/v1
 assets:
   - id: payroll.amount
     class: confidential
@@ -73,7 +71,7 @@ Read the complete [policy specification](docs/policy-spec.md) before authoring a
 ## Architecture
 
 ```text
-veilcheck.yaml
+evm-privacy-ci.yaml
       |
       +-- Solidity analyzer ---- AST / IR / ABI / source maps
       |
@@ -108,7 +106,7 @@ Every rule has a rationale, confidence model, examples, and required fixtures in
 ## Repository map
 
 ```text
-src/veilcheck/       Policy validator, CLI, rule metadata
+src/evm_privacy_ci/       Policy validator, CLI, rule metadata
 tests/               Unit tests for shipped scaffold behavior
 examples/            Valid policy and intentionally leaky Solidity examples
 docs/                Product, security, architecture, and adapter documentation
@@ -119,7 +117,7 @@ docs/                Product, security, architecture, and adapter documentation
 
 ```bash
 python -m unittest discover -s tests -v
-python -m veilcheck validate-policy examples/basic/veilcheck.yaml
+python -m evm_privacy_ci validate-policy examples/basic/evm-privacy-ci.json
 ```
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution rules and [SECURITY.md](SECURITY.md) for vulnerability reporting.

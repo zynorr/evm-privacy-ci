@@ -1,14 +1,14 @@
 # Project charter
 
 **Status:** Designed
-**Working name:** VeilCheck; subject to name clearance
+**Project name:** EVM Privacy CI
 **Category:** Horizen Builder Fund, Category 3 — New Projects / public good
 
 ## Mission
 
 Make privacy promises in EVM applications testable before deployment.
 
-VeilCheck converts a developer-authored privacy policy into local, deterministic checks over public application surfaces. Its initial focus is Solidity applications that use or integrate with Horizen's Vela and zkVerify primitives.
+EVM Privacy CI converts a developer-authored privacy policy into local, deterministic checks over public application surfaces. Its initial focus is Solidity applications that use or integrate with Horizen's Vela and zkVerify primitives.
 
 ## Problem statement
 
@@ -25,7 +25,7 @@ The EVM has no `private data` storage modifier. Solidity documentation states th
 
 ## Product promise
 
-> Given a complete policy and a supported code path, VeilCheck reports when an asset classified as protected reaches a policy-forbidden public surface.
+> Given a complete policy and a supported code path, EVM Privacy CI reports when an asset classified as protected reaches a policy-forbidden public surface.
 
 The promise is deliberately narrower than “verify privacy.” A clean result does not prove that a system has no privacy flaw.
 
@@ -50,7 +50,7 @@ The promise is deliberately narrower than “verify privacy.” A clean result d
 
 ## Ecosystem value
 
-Vela is a TEE-based confidential execution layer: data is encrypted in memory and computation is attested. zkVerify is a public chain dedicated to proof verification. VeilCheck sits at the integration boundary: it checks what must still be public for applications using those tools, and whether that public data matches the project's own policy. [Vela introduction](https://docs.horizen.io/vela/introduction/) [zkVerify overview](https://docs.zkverify.io/)
+Vela is a TEE-based confidential execution layer: data is encrypted in memory and computation is attested. zkVerify is a public chain dedicated to proof verification. EVM Privacy CI sits at the integration boundary: it checks what must still be public for applications using those tools, and whether that public data matches the project's own policy. [Vela introduction](https://docs.horizen.io/vela/introduction/) [zkVerify overview](https://docs.zkverify.io/)
 
 That makes the project a network capability rather than another end-user finance application: each privacy-forward builder can use the same policy language, fixtures, CI gate, and reporting format.
 
@@ -78,8 +78,8 @@ That makes the project a network capability rather than another end-user finance
 
 ## Naming and communications
 
-Use the following formulation until name clearance:
+Use the following formulation in grant and technical communications:
 
-> “VeilCheck is a working name for an open-source privacy-boundary CI project.”
+> “EVM Privacy CI is an open-source privacy-boundary CI project.”
 
 Do not claim it is “the first privacy linter,” “a privacy audit,” or “a privacy guarantee.”

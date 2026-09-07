@@ -4,7 +4,7 @@
 
 | ID | Risk | Likelihood | Impact | Mitigation | Trigger / owner |
 | --- | --- | --- | --- | --- | --- |
-| R1 | Product name conflicts with existing Veil/Veil Check+ use | High | High | Treat VeilCheck as internal; complete formal clearance before public launch | Founder/legal; before repository publication |
+| R1 | A future distinctive brand creates name or trademark conflict | Low | Medium | Keep the current descriptive project name; complete clearance before adopting a distinct brand, domain, or trademark | Founder/legal; before branding change |
 | R2 | No builder demand for a maintained policy manifest | Medium | High | Five interviews, three pilots, measure authoring time; stop/pivot if adoption is weak | Product owner; Phase 0/5 |
 | R3 | Static analysis produces unacceptable noise | Medium | High | Narrow v1 rules, fixtures, observe-only pilots, explicit coverage gaps, no broad heuristics | Rule owner; every release |
 | R4 | Static analysis creates false assurance | Medium | Critical | Strong threat model, clean-coverage behavior, no privacy score/certification language, independent review | Maintainers; docs/release |

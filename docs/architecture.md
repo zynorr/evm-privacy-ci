@@ -14,7 +14,7 @@
 
 ```text
                  +---------------------------+
-                 | veilcheck policy document |
+                 | evm-privacy-ci policy document |
                  +-------------+-------------+
                                |
                                v
@@ -46,7 +46,7 @@
 
 ### 1. Policy parser and normalizer
 
-**Implemented (partial):** JSON `veilcheck/v1` validation using the Python standard library.
+**Implemented (partial):** JSON `evm-privacy-ci/v1` validation using the Python standard library.
 **Designed:** YAML parsing, JSON Schema validation, source-location errors, schema migration, policy inheritance, and canonical JSON output.
 
 The normalizer turns selectors, classifications, allowed disclosures, exceptions, and proof maps into a canonical internal model. The analyzer consumes only that model.
@@ -142,7 +142,7 @@ GitHub accepts third-party SARIF results in code scanning. [GitHub SARIF documen
 
 ## Transform handling
 
-VeilCheck must not silently “declassify” an asset after `keccak256`, encryption, or an arbitrary library call. A transform is allowed only if the policy declares it and the rule implementation recognizes its supported form.
+EVM Privacy CI must not silently “declassify” an asset after `keccak256`, encryption, or an arbitrary library call. A transform is allowed only if the policy declares it and the rule implementation recognizes its supported form.
 
 For example, an approved commitment must declare a transform such as `commitment_with_secret_blinder`. The analyzer then checks the supported construction has a designated secret blinder input. This is an implementation check—not a cryptographic proof that the commitment is hiding or binding.
 
@@ -158,7 +158,7 @@ For example, an approved commitment must declare a transform such as `commitment
 
 ## Versioning
 
-- Policy schemas use `veilcheck/vN` identifiers.
+- Policy schemas use `evm-privacy-ci/vN` identifiers.
 - Rule IDs never change meaning after first stable release.
 - A changed detection semantic requires a new rule ID or an explicit major-version compatibility note.
 - Adapter compatibility is separately versioned from the policy schema.

@@ -3,9 +3,9 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from veilcheck import __version__
-from veilcheck.policy import load_policy, validate_policy
-from veilcheck.rules import RULES
+from evm_privacy_ci import __version__
+from evm_privacy_ci.policy import load_policy, validate_policy
+from evm_privacy_ci.rules import RULES
 
 
 def _validate_policy(path: str) -> int:
@@ -35,14 +35,14 @@ def _explain_rule(identifier: str) -> int:
 
 
 def main(argv: list[str] | None = None) -> int:
-    parser = argparse.ArgumentParser(prog="veilcheck", description="Proposal-stage privacy-boundary tooling.")
-    parser.add_argument("--version", action="version", version=f"veilcheck {__version__}")
+    parser = argparse.ArgumentParser(prog="evm-privacy-ci", description="Proposal-stage privacy-boundary tooling.")
+    parser.add_argument("--version", action="version", version=f"evm-privacy-ci {__version__}")
     subparsers = parser.add_subparsers(dest="command", required=True)
 
     validate = subparsers.add_parser("validate-policy", help="Validate a scaffold JSON policy.")
     validate.add_argument("path")
 
-    explain = subparsers.add_parser("explain", help="Explain a VeilCheck rule ID.")
+    explain = subparsers.add_parser("explain", help="Explain an EVM Privacy CI rule ID.")
     explain.add_argument("rule_id")
 
     subparsers.add_parser("scan", help="Reserved for the future analyzer; not implemented.")

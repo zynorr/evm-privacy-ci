@@ -8,7 +8,7 @@ The repository's own CI validates the implemented policy-validator scaffold and 
 
 ## Intended consumer workflow
 
-When the analyzer ships, a consumer repository will use a pinned VeilCheck release:
+When the analyzer ships, a consumer repository will use a pinned EVM Privacy CI release:
 
 ```yaml
 name: Privacy boundary
@@ -23,24 +23,24 @@ permissions:
   security-events: write
 
 jobs:
-  veilcheck:
+  evm-privacy-ci:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@<PINNED_SHA>
 
-      - name: Run VeilCheck
+      - name: Run EVM Privacy CI
         uses: <future-org>/<future-action>@<PINNED_SHA>
         with:
-          policy: veilcheck.yaml
+          policy: evm-privacy-ci.yaml
           format: sarif
-          output: reports/veilcheck.sarif
+          output: reports/evm-privacy-ci.sarif
           safe-build: true
 
       - name: Upload SARIF
         uses: github/codeql-action/upload-sarif@<PINNED_SHA>
         with:
-          sarif_file: reports/veilcheck.sarif
-          category: veilcheck
+          sarif_file: reports/evm-privacy-ci.sarif
+          category: evm-privacy-ci
 ```
 
 The placeholder action reference is deliberate. Do not copy it into a production workflow until a released action, immutable SHA, and signed provenance are published.
@@ -55,7 +55,7 @@ The placeholder action reference is deliberate. Do not copy it into a production
 
 ## Baseline and exceptions
 
-VeilCheck will support a reviewed baseline only for gradual rollout. New `error` findings must fail pull requests. An exception requires a reason, owner, approver, linked issue, and expiry; expiry is enforced by VC201.
+EVM Privacy CI will support a reviewed baseline only for gradual rollout. New `error` findings must fail pull requests. An exception requires a reason, owner, approver, linked issue, and expiry; expiry is enforced by VC201.
 
 ## SARIF rationale
 
