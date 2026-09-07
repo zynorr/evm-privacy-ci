@@ -1,0 +1,36 @@
+name: Documentation hygiene
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  basic-checks:
+    runs-on: ubuntu-latest
+    steps:
+      # v4.2.2; pin by immutable commit and update through Dependabot.
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+      - name: Reject likely credentials
+        shell: bash
+        run: |
+          ! rg -n --hidden --glob '!.git/**' '(keySecp256k1=|keyP521=|AKIA[0-9A-Z]{16}|-----BEGIN (RSA |EC |OPENSSH )?PRIVATE KEY-----)' .
+      - name: Require final newlines
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          bad = []
+          for path in Path('.').rglob('*'):
+              if not path.is_file() or '.git' in path.parts:
+                  continue
+              if path.suffix.lower() in {'.md', '.py', '.json', '.yaml', '.yml', '.sol', '.toml'}:
+                  data = path.read_bytes()
+                  if data and not data.endswith(b'\n'):
+                      bad.append(str(path))
+          if bad:
+              raise SystemExit('Files missing final newline:\n' + '\n'.join(bad))
+          PY

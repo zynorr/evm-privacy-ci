@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.invalid/veilcheck/schemas/veilcheck-v1.schema.json",
+  "title": "VeilCheck v1 policy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "assets"],
+  "properties": {
+    "schema": {"const": "veilcheck/v1"},
+    "metadata": {"type": "object"},
+    "defaults": {"type": "object"},
+    "vela": {"type": "object"},
+    "proofs": {"type": "array", "items": {"$ref": "#/$defs/proof"}},
+    "exceptions": {"type": "array", "items": {"$ref": "#/$defs/exception"}},
+    "assets": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/asset"}
+    }
+  },
+  "$defs": {
+    "surface": {
+      "enum": [
+        "transaction_calldata", "event", "storage", "public_getter", "return_value",
+        "external_call", "deployment_data", "zk_public_input", "commitment",
+        "vela_encrypted_event", "zkverify_statement", "zkverify_receipt"
+      ]
+    },
+    "disclosure": {
+      "type": "object",
+      "additionalProperties": true,
+      "required": ["surface"],
+      "properties": {
+        "surface": {"$ref": "#/$defs/surface"},
+        "transform": {"type": "string", "minLength": 1},
+        "purpose": {"type": "string", "minLength": 1}
+      }
+    },
+    "asset": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "class", "selectors"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z][a-z0-9]*(?:[._-][a-z0-9]+)*$"},
+        "class": {"enum": ["secret", "confidential", "linkable", "public"]},
+        "description": {"type": "string"},
+        "selectors": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "forbidden_surfaces": {"type": "array", "uniqueItems": true, "items": {"$ref": "#/$defs/surface"}},
+        "allowed_disclosures": {"type": "array", "items": {"$ref": "#/$defs/disclosure"}}
+      }
+    },
+    "proof": {"type": "object", "required": ["id", "system", "public_inputs"], "properties": {"id": {"type": "string"}, "system": {"type": "string"}, "public_inputs": {"type": "array"}}},
+    "exception": {"type": "object", "required": ["id", "rule", "reason", "owner", "approved_by", "expires", "issue"], "properties": {"id": {"type": "string"}, "rule": {"type": "string", "pattern": "^VC[0-9]{3}$"}, "reason": {"type": "string"}, "owner": {"type": "string"}, "approved_by": {"type": "string"}, "expires": {"type": "string", "format": "date"}, "issue": {"type": "string", "format": "uri"}}}
+  }
+}

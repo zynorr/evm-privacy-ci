@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.coverage
+coverage.xml
+htmlcov/
+
+# Build and reports
+build/
+dist/
+reports/
+work/
+*.sarif
+
+# Solidity / EVM
+artifacts/
+cache/
+out/
+broadcast/
+node_modules/
+
+# Local secrets and Vela environment files
+.env
+.env.*
+!.env.example
+wallet.conf
+*.key
+*.pem
+secrets/
+
+# Editors and operating systems
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

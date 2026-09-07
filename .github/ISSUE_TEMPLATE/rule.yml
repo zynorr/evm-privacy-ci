@@ -1,0 +1,38 @@
+name: Rule proposal
+description: Propose a privacy-boundary rule or sink/source extension.
+title: "rule: "
+labels: [rule, triage]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: Privacy boundary problem
+      description: Explain the asset, public surface, and threat. Do not disclose a live exploit.
+    validations:
+      required: true
+  - type: textarea
+    id: policy
+    attributes:
+      label: Proposed policy representation
+    validations:
+      required: true
+  - type: textarea
+    id: fixtures
+    attributes:
+      label: Required fixtures
+      description: List violation, safe, and unsupported/ambiguous cases.
+    validations:
+      required: true
+  - type: dropdown
+    id: adapter
+    attributes:
+      label: Relevant area
+      options:
+        - Solidity/EVM
+        - Vela
+        - zkVerify
+        - Policy schema
+        - Reporting/CI
+        - Other
+    validations:
+      required: true

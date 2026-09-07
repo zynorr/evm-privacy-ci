@@ -1,0 +1,34 @@
+name: Bug report
+description: Report a reproducible defect that is safe to disclose publicly.
+title: "bug: "
+labels: [bug, triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not report security vulnerabilities, source-code leakage, secrets, or exploitable privacy bypasses here. Follow SECURITY.md once the public reporting channel is configured.
+  - type: input
+    id: version
+    attributes:
+      label: VeilCheck version or commit
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Minimal reproduction
+      description: Use a sanitized fixture. Do not include keys, private traces, or proprietary source.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true

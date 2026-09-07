@@ -1,0 +1,23 @@
+{
+  "schema": "veilcheck/v1",
+  "assets": [
+    {
+      "id": "payroll.amount",
+      "class": "confidential",
+      "selectors": ["contracts/Payroll.sol::Payee.amount"],
+      "forbidden_surfaces": ["transaction_calldata", "event", "storage", "public_getter", "zk_public_input"],
+      "allowed_disclosures": [
+        {
+          "surface": "commitment",
+          "transform": "commitment_with_secret_blinder"
+        }
+      ]
+    },
+    {
+      "id": "proof.nullifier",
+      "class": "linkable",
+      "selectors": ["contracts/Verifier.sol::nullifier"],
+      "allowed_disclosures": [{"surface": "zk_public_input"}, {"surface": "event"}]
+    }
+  ]
+}
